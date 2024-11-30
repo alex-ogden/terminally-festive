@@ -29,7 +29,7 @@ void buildPicture(std::vector<std::vector<char> >& picture)
     for (int y = 0; y < treeHeight; y++) 
 		{
 				if (y % rowsBeforeBreak == 0)
-					currentWidth -= 6;
+					currentWidth -= 8;
         std::vector<char> row(treeWidth, ' ');
         int space = (treeWidth - currentWidth) / 2;
         for (int x = space; x < space + currentWidth; x++)
