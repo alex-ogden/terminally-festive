@@ -7,10 +7,12 @@
 #include <unistd.h>
 
 // Tree parameters
-int treeHeight = 15;
-int stumpHeight = 3;
+int treeHeight = 30;
+int stumpHeight = 5;
 int stumpWidth = 5;
 int treeWidth = (treeHeight * 2) + 1; // Calculate correct tree width based on height
+int requiredSnowParticles = 10;
+int sleepTimeMicroSeconds = 100000;
 
 // Function prototypes
 void buildPicture(std::vector<std::vector<char> >& picture);
@@ -57,11 +59,10 @@ void drawPicture(const std::vector<std::vector<char> >& picture)
 
 void addSnow(std::vector<std::vector<char> >& picture)
 {
-    int requiredSnowParticles = 5;
     int addedSnowParticles = 0;
 
     while (addedSnowParticles < requiredSnowParticles) {
-        int randY = rand() % treeHeight; // Random Y coordinate within the tree height
+        int randY = rand() % (treeHeight + stumpHeight); // Random Y coordinate within the tree height
         int randX = rand() % treeWidth;  // Random X coordinate within the tree width
 
         // Add snow only to empty spaces
@@ -82,7 +83,7 @@ int main()
         drawPicture(picture);
 
         // Pause for half a second
-				usleep(75000);
+				usleep(sleepTimeMicroSeconds);
 				system("clear");
     }
 
