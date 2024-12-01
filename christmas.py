@@ -1,4 +1,5 @@
 import os
+import sys # Just used for exiting program
 import time
 import random
 
@@ -77,17 +78,19 @@ def add_snow(picture):
 # section as that is the entry point of the program
 def main():
     while True:
-        # Build the tree and stump
-        picture = build_picture()
-        # Add snow at random, as long as it doesn't cover the tree/stump
-        add_snow(picture)
-        # Draw the tree/stump/snow to the screen
-        draw_picture(picture)
+        try:
+            # Build the tree and stump
+            picture = build_picture()
+            # Add snow at random, as long as it doesn't cover the tree/stump
+            add_snow(picture)
+            # Draw the tree/stump/snow to the screen
+            draw_picture(picture)
 
-        # Pause
-        time.sleep(sleep_time_seconds)
-        # Clear the console (use 'cls' for Windows)
-        os.system('clear')
-
+            # Pause
+            time.sleep(sleep_time_seconds)
+            # Clear the console (use 'cls' for Windows)
+            os.system('clear')
+        except KeyboardInterrupt:
+            sys.exit(1)
 if __name__ == "__main__":
     main()
