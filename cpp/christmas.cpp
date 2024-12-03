@@ -99,6 +99,11 @@ void addSnow(std::vector<std::vector<char>> &picture)
     }
 }
 
+void clearScreen() {
+	std::cout << "\033[2J\033[H";
+	std::flush(std::cout);
+}
+
 int main()
 {
     std::vector<std::vector<char>> picture;
@@ -111,7 +116,7 @@ int main()
 
         // Pause
         usleep(sleepTimeMicroSeconds);
-        system("clear");
+        clearScreen();
     }
     return 0;
 }

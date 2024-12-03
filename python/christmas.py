@@ -1,5 +1,5 @@
 import os
-import sys # Just used for exiting program
+import sys  # Just used for exiting program
 import time
 import random
 
@@ -52,7 +52,7 @@ def build_picture():
                 char_counter += 1
 
         picture.append(row)
-    
+
     return picture
 
 
@@ -73,9 +73,11 @@ def add_snow(picture):
             picture[rand_y][rand_x] = 'x'
             added_snow_particles += 1
 
-# This doesn't have to be it's own function
-# you can just add the code to the if __name__ == '__main__'
-# section as that is the entry point of the program
+# Function to clear the screen using ANSI escape codes
+def clear_screen():
+    print("\033[2J\033[H", end="", flush=True)  # ANSI code to clear screen and move cursor to top
+
+# Main function
 def main():
     while True:
         try:
@@ -88,9 +90,11 @@ def main():
 
             # Pause
             time.sleep(sleep_time_seconds)
-            # Clear the console (use 'cls' for Windows)
-            os.system('clear')
+            # Clear the console (using ANSI escape codes)
+            clear_screen()
+
         except KeyboardInterrupt:
             sys.exit(1)
+
 if __name__ == "__main__":
     main()
